@@ -1,5 +1,5 @@
 /* FarmQuiz clone: compact centered composition, olive prompt card, coral answer cards, explicit feedback, and no extra navigation. */
-import { Check, RotateCcw, Volume2 } from "lucide-react";
+import { Check, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const AUDIO_URL = "/manus-storage/quiz-audio_3c0027a5.mp3";
@@ -67,50 +67,24 @@ const QUESTIONS = [
   },
 ] as const;
 
-function useQuizAudio() {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.loop = true;
-    audio.volume = 0.28;
-    return () => audio.pause();
-  }, []);
-
-  const start = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.play().then(() => setIsPlaying(true)).catch(() => undefined);
-  };
-
-  const toggle = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (audio.paused) {
-      audio.play().then(() => setIsPlaying(true)).catch(() => undefined);
-    } else {
-      audio.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  return { audioRef, isPlaying, start, toggle };
-}
-
 export default function Quiz() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
   const [showScorePulse, setShowScorePulse] = useState(false);
-  const { audioRef, isPlaying, start, toggle } = useQuizAudio();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const question = QUESTIONS[questionIndex];
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play().catch(() => undefined);
+  }, [questionIndex]);
 
   const choose = (optionIndex: number) => {
     if (selected !== null) return;
-    start();
     setSelected(optionIndex);
     if (optionIndex === question.correct) {
       setScore((value) => value + 1);
@@ -195,9 +169,6 @@ export default function Quiz() {
         )}
       </div>
 
-      <button className="sound-toggle" type="button" onClick={toggle} aria-label={isPlaying ? "Pausar som" : "Ativar som"}>
-        <Volume2 size={15} />
-      </button>
       <div className="manus-badge">✣&nbsp; Made with Manus</div>
     </main>
   );
