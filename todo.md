@@ -42,3 +42,9 @@ Após uma seleção e o avanço para a questão 2, o elemento de áudio apresent
 ## Ajuste de marca
 
 - [x] Remover completamente “✣ Made with Manus” da interface e validar a publicação pública.
+
+## GitHub Pages
+
+- [ ] Diagnosticar por que `https://wendsontva-del.github.io/farmquiz-copy/` não está no ar.
+- [ ] Adicionar ou corrigir workflow de publicação, base path e assets do Vite.
+- [ ] Publicar novamente e validar o endereço público sem login.
