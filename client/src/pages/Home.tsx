@@ -168,7 +168,7 @@ export default function Quiz() {
               {question.options.map((option, index) => {
                 const isSelected = selected === index;
                 const isCorrect = index === question.correct;
-                const state = selected === null ? "" : isCorrect ? "answer-correct" : isSelected ? "answer-wrong" : "answer-muted";
+                const state = selected === null ? "" : isCorrect ? "answer-correct" : isSelected ? "answer-incorrect" : "answer-muted";
                 return (
                   <button
                     key={option}

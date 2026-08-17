@@ -157,9 +157,9 @@ button:focus-visible { outline: 3px solid #ffef2c; outline-offset: 3px; }
 }
 
 .answer-text { flex: 1; }
-.answer-correct { background: #18ad78; }
-.answer-wrong { background: #c24d6c; }
-.answer-muted { background: #c24d6c; opacity: 0.95; }
+.answer-correct { background: rgb(34, 197, 94); color: #fff; opacity: 0.75; }
+.answer-incorrect { background: rgb(251, 191, 36); color: rgb(31, 41, 55); opacity: 0.75; }
+.answer-muted { background: rgb(239, 68, 68); color: #fff; opacity: 0.75; }
 .answer-check { flex: 0 0 auto; opacity: 0.95; }
 
 .next-button, .restart-button {
