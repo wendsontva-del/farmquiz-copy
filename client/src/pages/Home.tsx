@@ -169,7 +169,6 @@ export default function Quiz() {
         )}
       </div>
 
-      <div className="manus-badge">✣&nbsp; Made with Manus</div>
     </main>
   );
 }

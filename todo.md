@@ -38,3 +38,7 @@ A cópia agora apresenta `loop: false`, `volume: 1`, `currentTime: 0` e chama `p
 ## Teste de troca de questão
 
 Após uma seleção e o avanço para a questão 2, o elemento de áudio apresentou `paused: false`, `ended: false`, `loop: false`, `volume: 1` e `currentTime` avançando, confirmando que a faixa foi reiniciada e está tocando durante a nova questão.
+
+## Ajuste de marca
+
+- [x] Remover completamente “✣ Made with Manus” da interface e validar a publicação pública.
